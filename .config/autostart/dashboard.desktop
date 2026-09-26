@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Dashboard Verde Tech
+Comment=Abre el dashboard al iniciar sesión
+Exec=sh -c "sleep 3; /home/nakusu/.local/bin/dashboard.sh"
+Icon=utilities-system-monitor
+X-KDE-autostart-phase=2
