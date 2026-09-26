@@ -74,6 +74,7 @@ enableTileLayout=true
 floatedWindowsLayer=1
 floatingClass=org.kde.plasmashell,krunner,fuzzel,org.kde.polkit-kde-authentication-agent-1,org.kde.kdialog,xdg-desktop-portal-kde,org.kde.spectacle,pinentry-qt,steam,org.kde.kcalc
 floatingTitle=Picture-in-Picture,Imagen en imagen
+ignoreClass=quickshell
 mouseDragInsert=true
 screenGapBottom=10
 screenGapLeft=10
