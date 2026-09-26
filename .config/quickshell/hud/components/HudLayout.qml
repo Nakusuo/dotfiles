@@ -9,7 +9,7 @@ Item {
     property alias reactor: reactor
     property alias music: music
     property alias stats: stats
-    readonly property int top: 60
+    readonly property int margenArriba: 60
 
     property date now: new Date()
     Timer { interval: 60000; running: true; repeat: true; onTriggered: root.now = new Date() }
@@ -39,7 +39,7 @@ Item {
 
     Reveal {
         delay: 0
-        x: 60; y: root.top + 20
+        x: 60; y: root.margenArriba + 20
         width: reactor.width; height: reactor.height
         Reactor { id: reactor }
     }
@@ -47,7 +47,7 @@ Item {
     Reveal {
         delay: 120
         anchors.horizontalCenter: parent.horizontalCenter
-        y: root.top + 40
+        y: root.margenArriba + 40
         width: greet.width; height: greet.height
         Column {
             id: greet
@@ -73,7 +73,7 @@ Item {
 
     Reveal {
         delay: 200
-        x: parent.width - stats.width - 50; y: root.top + 20
+        x: parent.width - stats.width - 50; y: root.margenArriba + 20
         width: stats.width; height: stats.height
         StatsPanel { id: stats }
     }

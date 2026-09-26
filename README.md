@@ -11,7 +11,11 @@ Mi rice de KDE Plasma 6 (CachyOS, Wayland) con aspecto tipo Hyprland: paleta ver
 - **Dashboard:** `dashboard.sh` abre btop, reloj, cmatrix y pipes en mosaico al iniciar sesión (Super+Shift+M).
 - **Cambio de tema:** `tema.sh verde` o `tema.sh rojo`.
 - **Dock (Quickshell):** efecto lupa estilo Mac, se esconde cuando una ventana lo tapa. Ver abajo.
-- **HUD:** Quickshell en `.config/quickshell/hud` (Super+A).
+- **HUD (Super+A):** reloj reactor, sistema y música sobre una lluvia tipo cmatrix, con el mismo estilo que el dashboard. Esc o clic para cerrar.
+
+## HUD
+
+![HUD](docs/hud.png)
 
 ## Dock
 
@@ -38,6 +42,7 @@ KWin no le da a Quickshell la lista de ventanas, así que `ventanas.js` (un scri
 | Super + F | Soltar la ventana del mosaico o volver a meterla |
 | Super + D | Lanzador (fuzzel) |
 | Super + Shift + M | Dashboard |
+| Super + A | HUD |
 
 ## Programas necesarios
 

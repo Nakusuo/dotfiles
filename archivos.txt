@@ -27,15 +27,13 @@
 .config/quickshell/hud/cava.conf
 .config/quickshell/hud/components/Arc.qml
 .config/quickshell/hud/components/Gauge.qml
-.config/quickshell/hud/components/Hexagon.qml
 .config/quickshell/hud/components/HudFrame.qml
 .config/quickshell/hud/components/HudLayout.qml
+.config/quickshell/hud/components/MatrixRain.qml
 .config/quickshell/hud/components/MusicPanel.qml
 .config/quickshell/hud/components/Reactor.qml
 .config/quickshell/hud/components/StatsPanel.qml
-.config/quickshell/hud/components/WorkspaceBar.qml
 .config/quickshell/hud/services/Cava.qml
-.config/quickshell/hud/services/Desktops.qml
 .config/quickshell/hud/services/SysStats.qml
 .config/quickshell/hud/shell.qml
 .config/quickshell/hud/Theme.qml
