@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Dashboard Verde Tech
+Comment=Reloj, cmatrix, btop y pipes en mosaico
+Exec=/home/nakusu/.local/bin/dashboard.sh
+Icon=utilities-system-monitor
+Categories=System;Monitor;
+X-KDE-Shortcuts=Meta+Shift+M

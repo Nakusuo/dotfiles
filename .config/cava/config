@@ -1,0 +1,17 @@
+# cava con degradado Verde Tech
+[general]
+framerate = 60
+bar_width = 2
+bar_spacing = 1
+
+[color]
+background = default
+gradient = 1
+gradient_count = 4
+gradient_color_1 = '#2f6b4e'
+gradient_color_2 = '#4f9a74'
+gradient_color_3 = '#6cc196'
+gradient_color_4 = '#8fd3ae'
+
+[smoothing]
+noise_reduction = 77

@@ -1,0 +1,36 @@
+# Tema "Verde Tech" para Alacritty (importado desde alacritty.toml)
+[colors]
+draw_bold_text_with_bright_colors = false
+
+[colors.primary]
+background = "0x0d1310"
+foreground = "0xcfdcd4"
+
+[colors.cursor]
+text = "0x0d1310"
+cursor = "0x6cc196"
+
+[colors.selection]
+text = "0xcfdcd4"
+background = "0x2b3d33"
+
+[colors.normal]
+black = "0x1a2520"
+red = "0xd0776f"
+green = "0x6cc196"
+yellow = "0xd4b56a"
+blue = "0x6f9fc4"
+magenta = "0xa98cc4"
+cyan = "0x5fa8a0"
+white = "0xcfdcd4"
+
+[colors.bright]
+black = "0x4a5d52"
+red = "0xe08b83"
+green = "0x8fd3ae"
+yellow = "0xe2c888"
+blue = "0x8bb5d6"
+magenta = "0xbfa6d6"
+cyan = "0x7fc2ba"
+white = "0xeef4f0"
+

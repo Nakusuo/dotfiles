@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=HUD (Quickshell)
+Exec=qs -c hud
+X-KDE-autostart-phase=2
+NoDisplay=true
