@@ -330,5 +330,8 @@ toggle do not disturb=none,none,Conmutar no molestar
 [services][Alacritty.desktop]
 _launch=Ctrl+Alt+T\tMeta+Return\tMeta+Enter
 
+[services][hud-toggle.desktop]
+_launch=Meta+A
+
 [services][org.kde.konsole.desktop]
 _launch=none
