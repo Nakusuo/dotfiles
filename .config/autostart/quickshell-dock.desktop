@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Dock (Quickshell)
+Exec=qs -c dock
+X-KDE-autostart-phase=2
+NoDisplay=true
