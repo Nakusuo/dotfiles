@@ -2,6 +2,7 @@
 .config/alacritty/alacritty.toml.bak-20260924
 .config/alacritty/verdetech.toml
 .config/autostart/dashboard.desktop
+.config/autostart/quickshell-dock.desktop
 .config/autostart/quickshell-hud.desktop
 .config/btop/btop.conf
 .config/btop/themes/verdetech.theme
@@ -13,12 +14,16 @@
 .config/kcminputrc
 .config/kdeglobals
 .config/kglobalshortcutsrc
+.config/konsolerc
 .config/kscreenlockerrc
 .config/kwinrc
 .config/kwinrulesrc
 .config/plasma-org.kde.plasma.desktop-appletsrc
 .config/plasmarc
 .config/plasmashellrc
+.config/quickshell/dock/puente.py
+.config/quickshell/dock/shell.qml
+.config/quickshell/dock/ventanas.js
 .config/quickshell/hud/cava.conf
 .config/quickshell/hud/components/Arc.qml
 .config/quickshell/hud/components/Gauge.qml

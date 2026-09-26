@@ -10,7 +10,22 @@ Mi rice de KDE Plasma 6 (CachyOS, Wayland) con aspecto tipo Hyprland: paleta ver
 - **Mosaico:** Krohnkite con huecos de 10 px, esquinas redondeadas y 5 escritorios.
 - **Dashboard:** `dashboard.sh` abre btop, reloj, cmatrix y pipes en mosaico al iniciar sesión (Super+Shift+M).
 - **Cambio de tema:** `tema.sh verde` o `tema.sh rojo`.
+- **Dock (Quickshell):** efecto lupa estilo Mac, se esconde cuando una ventana lo tapa. Ver abajo.
 - **HUD:** Quickshell en `.config/quickshell/hud` (Super+A).
+
+## Dock
+
+![Dock](docs/dock.png)
+
+Dock propio hecho con Quickshell en `.config/quickshell/dock` (arranca con `qs -c dock`):
+
+- **Efecto lupa:** el ícono bajo el cursor crece y los vecinos crecen un poco menos, como en macOS.
+- **Apps abiertas:** un punto debajo; una raya más larga si está al frente.
+- **Clic:** abre la app o la trae al frente; si ya está al frente, pasa a su siguiente ventana. **Clic central:** abre otra ventana.
+- **Se esconde** si una ventana lo tapa; aparece al llevar el cursor al borde de abajo.
+- Las apps fijadas se cambian en la lista `fijadas` de `shell.qml`.
+
+KWin no le da a Quickshell la lista de ventanas, así que `ventanas.js` (un script de KWin) la envía por DBus a `puente.py`, que se la pasa al dock.
 
 ## Atajos
 
