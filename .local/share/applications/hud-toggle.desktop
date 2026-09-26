@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Invocar HUD
+Exec=qs -c hud ipc call hud toggle
+Icon=preferences-desktop-display
+NoDisplay=true
+X-KDE-Shortcuts=Meta+A
