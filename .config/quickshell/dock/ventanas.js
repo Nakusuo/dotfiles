@@ -20,7 +20,8 @@ function enviar() {
             cls: w.resourceClass || "",
             titulo: w.caption,
             activa: w === workspace.activeWindow,
-            min: w.minimized
+            min: w.minimized,
+            aqui: enEsteEscritorio(w)     // el dock solo usa las ventanas del escritorio actual
         });
         if (!w.minimized && w.output === pantalla && enEsteEscritorio(w)) {
             const f = w.frameGeometry;

@@ -6,6 +6,7 @@ import Quickshell.Widgets
 
 // Dock "Verde Tech" con efecto lupa estilo Mac.
 //  - Las ventanas abiertas llegan desde KWin a través de puente.py (ventanas.js)
+//  - Cada escritorio va por su cuenta: solo cuentan las ventanas del escritorio actual
 //  - Clic: abre la app, o la trae al frente; si ya está al frente, pasa a su siguiente ventana
 //  - Clic central: abre otra ventana de la app
 //  - Se esconde cuando una ventana lo tapa; aparece al llevar el cursor al borde de abajo
@@ -28,7 +29,8 @@ ShellRoot {
     readonly property color fondo: "#0a0f0c"
     readonly property color texto: "#cfdcd4"
 
-    property var ventanas: []
+    property var ventanas: []   // todas las ventanas (de todos los escritorios)
+    readonly property var aqui: ventanas.filter(w => w.aqui)
     property bool tapa: false
 
     function claveDe(w) {
@@ -43,7 +45,7 @@ ShellRoot {
             vistos[id.toLowerCase()] = true;
             out.push({ clave: id.toLowerCase(), id: id });
         }
-        for (const w of ventanas) {
+        for (const w of aqui) {
             const k = claveDe(w);
             if (!vistos[k]) { vistos[k] = true; out.push({ clave: k, id: w.app || w.cls }); }
         }
@@ -94,13 +96,18 @@ ShellRoot {
             readonly property int anchoBase: root.items.length * (root.base + root.espacio) - root.espacio
 
             // Solo la barra (o la franja del borde cuando está escondido) recibe el ratón
-            mask: Region { item: visible_ ? (raton.hovered ? zonaCrecida : barra) : franja }
+            mask: Region { item: visible_ ? (raton.hovered ? zonaCrecida : zonaBarra) : franja }
 
             Item {
                 id: franja
                 anchors { bottom: parent.bottom; horizontalCenter: parent.horizontalCenter }
                 width: barra.width; height: 3
                 HoverHandler { id: zona }
+            }
+            Item {
+                id: zonaBarra   // la barra más el margen de abajo
+                anchors { bottom: parent.bottom; horizontalCenter: parent.horizontalCenter }
+                width: barra.width; height: barra.height + 6
             }
             Item {
                 id: zonaCrecida
@@ -144,7 +151,7 @@ ShellRoot {
                             required property int index
 
                             readonly property var entrada: DesktopEntries.heuristicLookup(modelData.id)
-                            readonly property var suyas: root.ventanas.filter(w => root.claveDe(w) === modelData.clave)
+                            readonly property var suyas: root.aqui.filter(w => root.claveDe(w) === modelData.clave)
                             readonly property bool activa: suyas.some(w => w.activa)
 
                             // Efecto lupa: distancia (en íconos) entre el cursor y este ícono
