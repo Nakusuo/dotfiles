@@ -16,7 +16,7 @@ sleep 0.3
 # Si algún programa no está instalado, usa otro que sí esté
 reloj='tty-clock -c -C 2 -b -s -D'
 command -v tty-clock >/dev/null || reloj='watch -t -n1 date +%H:%M:%S'
-pipes='pipes.sh -c 2 -c 6 -t 1 -R'
+pipes='pipes.sh -c 2 -c 6 -t 1 -R -f 25'
 command -v pipes.sh >/dev/null || pipes='cava'
 
 lanzar() {  # clase comando...
@@ -38,20 +38,29 @@ sueltas() {
   journalctl --user --since "-1min" -o cat | grep "$marca" | tail -1 | awk '{print $2}'
 }
 
+# Cierra las ventanas del dashboard y lo que corre dentro (pipes.sh ignora el cierre y queda gastando CPU)
+cerrar_todo() {
+  pkill -f '^alacritty --class dash-'
+  pkill -9 -f '^bash /usr/bin/pipes.sh'
+  pkill -x cmatrix; pkill -x tty-clock
+}
+
 abrir_todo() {
   # La primera ventana ocupa el hueco grande (maestro) de Krohnkite
   # btop espera a que estén las 4 ventanas y, si su hueco es pequeño, usa el modo compacto (CPU + red)
   lanzar dash-btop   'sleep 2.5; [ $(tput lines) -ge 24 ] && [ $(tput cols) -ge 80 ] && exec btop || exec btop -p 3'
   lanzar dash-reloj  "$reloj"
-  lanzar dash-matrix 'cmatrix -C green -b -u 5'
+  lanzar dash-matrix 'cmatrix -C green -b -u 7'
   lanzar dash-pipes  "$pipes"
 }
+
+cerrar_todo; sleep 0.5
 
 # Abrir y comprobar; si Krohnkite dejó ventanas sueltas, cerrar y reintentar (hasta 3 veces)
 for intento in 1 2 3; do
   abrir_todo
   sleep 1.5
   [ "$(sueltas)" = 0 ] && break
-  pkill -f '^alacritty --class dash-'
+  cerrar_todo
   sleep 2
 done

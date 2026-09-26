@@ -126,7 +126,7 @@ TerminalApplication=alacritty
 TerminalService=Alacritty.desktop
 
 [Icons]
-Theme=Colloid-Green-Everforest-Dark
+Theme=BeautyLine-Verde
 
 [KDE]
 AnimationDurationFactor=0.7

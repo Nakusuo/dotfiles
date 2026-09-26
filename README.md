@@ -31,7 +31,18 @@ paru -S kwin-scripts-krohnkite kwin-effect-rounded-corners-git plasma6-applets-p
         alacritty btop cava fastfetch fuzzel quickshell cmatrix tty-clock pipes.sh
 ```
 
-Iconos: Colloid-Green-Everforest-Dark (se instalan aparte, desde el repositorio de Colloid).
+### Iconos
+
+**BeautyLine Verde**: los iconos de líneas de [BeautyLine](https://gitlab.com/garuda-linux/themes-and-settings/artwork/beautyline) pasados a la paleta verde. No se suben al repo porque pesan 69 MB; el script los genera:
+
+```
+~/.local/bin/iconos-verdes.py
+/usr/lib/plasma-changeicons BeautyLine-Verde
+```
+
+![Iconos BeautyLine Verde](docs/iconos.png)
+
+Para los iconos que BeautyLine no tiene se usa Colloid-Green-Everforest-Dark como respaldo.
 
 ## Uso
 

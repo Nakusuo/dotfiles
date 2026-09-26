@@ -36,6 +36,7 @@
 .config/quickshell/hud/Theme.qml
 Imágenes/wallpaper-tech.png
 .local/bin/dashboard.sh
+.local/bin/iconos-verdes.py
 .local/bin/tema.sh
 .local/share/applications/dashboard.desktop
 .local/share/color-schemes/RojoTech.colors
