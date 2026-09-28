@@ -39,7 +39,12 @@ ShellRoot {
         return k;
     }
 
-    readonly property var items: {
+    // Solo cambia cuando cambia la lista de íconos (no con cada movimiento de ventana):
+    // si no, el Repeater recrea los íconos a cada rato y se pierden los clics.
+    property var items: []
+    onAquiChanged: armarItems()
+    Component.onCompleted: armarItems()
+    function armarItems() {
         const out = [], vistos = {};
         for (const id of fijadas) {
             vistos[id.toLowerCase()] = true;
@@ -49,7 +54,7 @@ ShellRoot {
             const k = claveDe(w);
             if (!vistos[k]) { vistos[k] = true; out.push({ clave: k, id: w.app || w.cls }); }
         }
-        return out;
+        if (JSON.stringify(out) !== JSON.stringify(items)) items = out;
     }
 
     Process {
@@ -150,7 +155,10 @@ ShellRoot {
                             required property var modelData
                             required property int index
 
-                            readonly property var entrada: DesktopEntries.heuristicLookup(modelData.id)
+                            // La lista de apps carga en segundo plano: al mencionar "applications"
+                            // la búsqueda se repite cuando termina de cargar (antes quedaba vacía y el clic no hacía nada)
+                            readonly property var entrada: DesktopEntries.applications.values.length >= 0
+                                                           ? DesktopEntries.heuristicLookup(modelData.id) : null
                             readonly property var suyas: root.aqui.filter(w => root.claveDe(w) === modelData.clave)
                             readonly property bool activa: suyas.some(w => w.activa)
 
@@ -168,10 +176,17 @@ ShellRoot {
                             y: parent.height - height
                             Behavior on width { NumberAnimation { duration: 110; easing.type: Easing.OutQuad } }
 
-                            IconImage {
-                                anchors.fill: parent
+                            // Tamaño fijo (el máximo) y solo se escala: si cambiara de tamaño, el ícono
+                            // se volvería a cargar en cada paso del efecto lupa y parpadearía/desaparecería
+                            Image {
+                                width: root.maximo; height: root.maximo
+                                anchors.centerIn: parent
+                                scale: icono.width / root.maximo
                                 source: Quickshell.iconPath(icono.entrada?.icon ?? icono.modelData.id, "application-x-executable")
-                                asynchronous: true
+                                sourceSize: Qt.size(root.maximo, root.maximo)
+                                fillMode: Image.PreserveAspectFit
+                                smooth: true
+                                mipmap: true
                             }
 
                             // Indicador de app abierta: punto; si está al frente, raya más larga
@@ -208,6 +223,12 @@ ShellRoot {
                                 acceptedButtons: Qt.LeftButton | Qt.MiddleButton
                                 onClicked: ev => {
                                     const s = icono.suyas;
+                                    // Abierta solo en otro escritorio (p. ej. Spotify, que no abre una segunda ventana): ir a ella
+                                    const otra = root.ventanas.find(w => root.claveDe(w) === icono.modelData.clave);
+                                    if (ev.button === Qt.LeftButton && s.length === 0 && otra) {
+                                        root.activar(otra);
+                                        return;
+                                    }
                                     if (ev.button === Qt.MiddleButton || s.length === 0) {
                                         icono.entrada?.execute();
                                         return;
