@@ -21,6 +21,8 @@
 .config/plasma-org.kde.plasma.desktop-appletsrc
 .config/plasmarc
 .config/plasmashellrc
+.config/quickshell/dock/accion.py
+.config/quickshell/dock/fijadas.json
 .config/quickshell/dock/puente.py
 .config/quickshell/dock/shell.qml
 .config/quickshell/dock/ventanas.js

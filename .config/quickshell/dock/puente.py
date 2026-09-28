@@ -14,6 +14,7 @@ XML = f'''<node><interface name="{NOMBRE}">
 
 # Morir junto con el dock (si no, quedan puentes viejos peleando por el nombre)
 ctypes.CDLL('libc.so.6').prctl(1, signal.SIGTERM)   # PR_SET_PDEATHSIG
+ctypes.CDLL('libc.so.6').prctl(15, b'dock-puente')    # PR_SET_NAME: nombre propio para la regla de prioridad (ananicy)
 if os.getppid() == 1:
     sys.exit(0)
 
