@@ -21,6 +21,9 @@ function enviar() {
             titulo: w.caption,
             activa: w === workspace.activeWindow,
             min: w.minimized,
+            encima: w.keepAbove,
+            completa: w.fullScreen,
+            escritorios: w.onAllDesktops ? [] : w.desktops.map(d => d.id),
             aqui: enEsteEscritorio(w)     // el dock solo usa las ventanas del escritorio actual
         });
         if (!w.minimized && w.output === pantalla && enEsteEscritorio(w)) {
@@ -28,7 +31,8 @@ function enviar() {
             if (f.y + f.height > g.y + g.height - ALTO_DOCK) tapa = true;
         }
     }
-    const datos = JSON.stringify({ ventanas: ventanas, tapa: tapa });
+    const escritorios = workspace.desktops.map(d => ({ id: d.id, nombre: d.name, actual: d === workspace.currentDesktop }));
+    const datos = JSON.stringify({ ventanas: ventanas, tapa: tapa, escritorios: escritorios });
     if (datos === ultimo) return;
     ultimo = datos;
     callDBus("org.verdetech.Dock", "/", "org.verdetech.Dock", "Update", datos);
@@ -39,6 +43,8 @@ function vigilar(w) {
     w.frameGeometryChanged.connect(enviar);
     w.captionChanged.connect(enviar);
     w.desktopsChanged.connect(enviar);
+    w.keepAboveChanged.connect(enviar);
+    w.fullScreenChanged.connect(enviar);
 }
 
 workspace.windowList().forEach(vigilar);
