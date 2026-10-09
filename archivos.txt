@@ -26,13 +26,16 @@
 .config/quickshell/dock/shell.qml
 .config/quickshell/dock/ventanas.js
 .config/quickshell/hud/cava.conf
+.config/quickshell/hud/components/Alerta.qml
 .config/quickshell/hud/components/Arc.qml
 .config/quickshell/hud/components/Gauge.qml
 .config/quickshell/hud/components/HudFrame.qml
 .config/quickshell/hud/components/HudLayout.qml
 .config/quickshell/hud/components/MatrixRain.qml
 .config/quickshell/hud/components/MusicPanel.qml
+.config/quickshell/hud/components/Osd.qml
 .config/quickshell/hud/components/Reactor.qml
+.config/quickshell/hud/components/Scanlines.qml
 .config/quickshell/hud/components/StatsPanel.qml
 .config/quickshell/hud/services/Cava.qml
 .config/quickshell/hud/services/SysStats.qml
@@ -44,6 +47,8 @@ Imágenes/wallpaper-cyber.png
 .local/bin/iconos-verdes.py
 .local/bin/tema.sh
 .local/bin/ligero.sh
+.local/bin/fondo-y2k.py
+.local/bin/bloqueo-video.sh
 .local/share/applications/dashboard.desktop
 .local/share/applications/hud-toggle.desktop
 .local/share/applications/modo-ligero.desktop

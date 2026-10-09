@@ -11,7 +11,8 @@ Mi rice de KDE Plasma 6 (CachyOS, Wayland) con aspecto tipo Hyprland: paleta ver
 - **Dashboard:** `dashboard.sh` abre btop, reloj, cmatrix y pipes en mosaico con Super+Shift+M (ya no arranca solo al iniciar sesión, para no gastar CPU).
 - **Cambio de tema:** `tema.sh verde` o `tema.sh rojo`.
 - **Dock (Quickshell):** efecto lupa estilo Mac, se esconde cuando una ventana lo tapa. Ver abajo.
-- **HUD (Super+A):** reloj reactor, sistema y música sobre una lluvia tipo cmatrix, con el mismo estilo que el dashboard. Esc o clic para cerrar.
+- **HUD (Super+A):** reloj reactor, sistema y música sobre una lluvia tipo cmatrix, con estética cyberpunk 2000: ventanas tipo Windows 98, pantalla de videocámara de visión nocturna (REC en rojo) y un 警告 WARNING que salta solo si la batería, la CPU o la RAM están mal. Esc o clic para cerrar.
+- **Fondos cyberpunk 2000 / Fallen Angels:** `fondo-y2k.py` convierte cualquier imagen en un fondo de visión nocturna con VHS y pantalla de videocámara. `bloqueo-video.sh` pone un GIF o video en la pantalla de bloqueo. Ver abajo.
 
 ## HUD
 
@@ -45,11 +46,34 @@ KWin no le da a Quickshell la lista de ventanas, así que `ventanas.js` (un scri
 | Super + A | HUD |
 | Super + Shift + G | Modo ligero (sin blur, sombras ni animaciones) |
 
+## Fondos cyberpunk 2000
+
+**Escritorio:** cualquier imagen pasa a visión nocturna verde con VHS (colores corridos, grano, scanlines) y la pantalla de videocámara:
+
+```
+fondo-y2k.py foto.jpg ~/Imágenes/fondo-y2k.png              # visión nocturna
+fondo-y2k.py foto.jpg ~/Imágenes/fondo-y2k.png --ascii      # hecha de caracteres sobre código
+fondo-y2k.py foto.jpg ~/Imágenes/fondo-y2k.png --errores    # con ventanas de error y 警告
+plasma-apply-wallpaperimage ~/Imágenes/fondo-y2k.png
+```
+
+Se pueden juntar (`--ascii --errores`); `--sin-osd` quita los textos de videocámara. Es una imagen fija: no gasta nada.
+
+**Pantalla de bloqueo con video o GIF:**
+
+```
+bloqueo-video.sh mi-gif.gif
+```
+
+Lo pasa a MP4 del tamaño de la pantalla (un GIF lo decodifica la CPU; un MP4, la tarjeta de video) y dice dónde elegirlo. Usa el plugin Smart Video Wallpaper Reborn, que pausa el video con la pantalla apagada. El video va solo en el bloqueo: en el escritorio gastaría todo el rato.
+
+> Si tienes GPU AMD y Plasma se cuelga al usar el plugin, el autor del plugin documenta cómo recuperarlo en su página.
+
 ## Programas necesarios
 
 ```
 paru -S kwin-scripts-krohnkite kwin-effect-rounded-corners-git plasma6-applets-panel-colorizer \
-        alacritty btop cava fastfetch fuzzel quickshell cmatrix tty-clock pipes.sh
+        alacritty btop cava fastfetch fuzzel quickshell cmatrix tty-clock pipes.sh         python-pillow noto-fonts-cjk ffmpeg plasma6-wallpapers-smart-video-wallpaper-reborn
 ```
 
 ### Iconos

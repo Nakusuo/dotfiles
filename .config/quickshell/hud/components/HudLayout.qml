@@ -37,9 +37,18 @@ Item {
         }
     }
 
+    readonly property int izquierda: 60
+
+    // pantalla de videocámara de visión nocturna en las esquinas
     Reveal {
         delay: 0
-        x: 60; y: root.margenArriba + 20
+        anchors.fill: parent
+        Osd { anchors.fill: parent }
+    }
+
+    Reveal {
+        delay: 0
+        x: root.izquierda; y: root.margenArriba + 20
         width: reactor.width; height: reactor.height
         Reactor { id: reactor }
     }
@@ -80,8 +89,15 @@ Item {
 
     Reveal {
         delay: 300
-        x: 50; y: parent.height - music.height - 110
+        x: root.izquierda; y: parent.height - music.height - 110
         width: music.width; height: music.height
         MusicPanel { id: music }
+    }
+
+    Reveal {
+        delay: 400
+        x: parent.width - alerta.width - 50; y: parent.height - alerta.height - 110
+        width: alerta.width; height: alerta.height
+        Alerta { id: alerta }
     }
 }

@@ -60,6 +60,14 @@ ShellRoot {
                     sourceComponent: HudLayout { revealed: shell.summoned }
                 }
 
+                // líneas de televisor CRT por encima de todo
+                Loader {
+                    anchors.fill: parent
+                    active: overlay.visible
+                    opacity: backdrop.opacity
+                    sourceComponent: Scanlines {}
+                }
+
                 Item {
                     anchors.fill: parent
                     focus: shell.summoned
