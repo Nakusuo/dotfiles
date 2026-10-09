@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Modo ligero
+Comment=Apaga o devuelve el blur, las sombras y las animaciones
+Exec=/home/nakusu/.local/bin/ligero.sh
+Icon=preferences-desktop-effects
+NoDisplay=true
+X-KDE-Shortcuts=Meta+Shift+G

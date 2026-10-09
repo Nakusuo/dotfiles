@@ -42,8 +42,10 @@ Imágenes/wallpaper-tech.png
 .local/bin/dashboard.sh
 .local/bin/iconos-verdes.py
 .local/bin/tema.sh
+.local/bin/ligero.sh
 .local/share/applications/dashboard.desktop
 .local/share/applications/hud-toggle.desktop
+.local/share/applications/modo-ligero.desktop
 .local/share/color-schemes/RojoTech.colors
 .local/share/color-schemes/VerdeTech.colors
 .local/share/konsole/VerdeTech.colorscheme
