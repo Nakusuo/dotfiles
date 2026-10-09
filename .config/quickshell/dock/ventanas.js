@@ -38,9 +38,23 @@ function enviar() {
     callDBus("org.verdetech.Dock", "/", "org.verdetech.Dock", "Update", datos);
 }
 
+// Mover o redimensionar una ventana avisa en cada frame: esos avisos se juntan
+// y se envían como mucho cada 120 ms (antes cada frame pasaba por DBus, Python y el dock)
+let espera = null;
+if (typeof QTimer !== "undefined") {
+    espera = new QTimer();
+    espera.singleShot = true;
+    espera.interval = 120;
+    espera.timeout.connect(enviar);
+}
+function enviarPronto() {
+    if (!espera) enviar();
+    else if (!espera.active) espera.start();
+}
+
 function vigilar(w) {
     w.minimizedChanged.connect(enviar);
-    w.frameGeometryChanged.connect(enviar);
+    w.frameGeometryChanged.connect(enviarPronto);
     w.captionChanged.connect(enviar);
     w.desktopsChanged.connect(enviar);
     w.keepAboveChanged.connect(enviar);

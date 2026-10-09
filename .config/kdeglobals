@@ -129,7 +129,7 @@ TerminalService=Alacritty.desktop
 Theme=BeautyLine-Verde
 
 [KDE]
-AnimationDurationFactor=0.7
+AnimationDurationFactor=0.5
 LookAndFeelPackage=org.kde.breezedark.desktop
 contrast=4
 frameContrast=0.2
