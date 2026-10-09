@@ -43,6 +43,7 @@ KWin no le da a Quickshell la lista de ventanas, así que `ventanas.js` (un scri
 | Super + D | Lanzador (fuzzel) |
 | Super + Shift + M | Dashboard |
 | Super + A | HUD |
+| Super + Shift + G | Modo ligero (sin blur, sombras ni animaciones) |
 
 ## Programas necesarios
 
@@ -72,6 +73,8 @@ Pensado para que vaya fluido en una laptop modesta:
 - El dock recibe los cambios de KWin como mucho cada 120 ms al mover o redimensionar ventanas.
 - Solo un blur (el efecto `glass`); el blur nativo de KWin y el efecto de transparencia al mover van apagados.
 - Animaciones de Plasma a 0.5× (más rápidas).
+
+**Modo ligero (Super+Shift+G):** como el "game mode" de otros rices. Apaga el blur, las sombras y las animaciones para cuando necesitas toda la máquina (juegos, compilar, videollamadas). Otro Super+Shift+G lo devuelve todo. También: `ligero.sh on` / `ligero.sh off`.
 
 Si aún va lenta:
 
