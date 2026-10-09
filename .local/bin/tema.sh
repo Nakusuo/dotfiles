@@ -18,8 +18,8 @@ archivos=(
   .config/quickshell/hud/shell.qml
   .local/share/konsole/VerdeTech.colorscheme
 )
-fondo=~/Imágenes/wallpaper-tech.png
-fondo_rojo=~/Imágenes/wallpaper-tech-rojo-oscuro.png
+fondo=~/Imágenes/wallpaper-cyber.png
+fondo_rojo=~/Imágenes/wallpaper-cyber-rojo.png
 
 # 1) Guardar el verde original (solo una vez)
 if [ ! -d "$guardado" ]; then
