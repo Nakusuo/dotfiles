@@ -10,6 +10,8 @@ HudFrame {
     tag: "UP " + SysStats.uptime
     width: 250; height: 330
 
+    Binding { target: SysStats; property: "active"; value: root.visible }
+
     property string host: ""
     Process {
         running: true

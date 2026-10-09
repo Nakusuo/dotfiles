@@ -45,6 +45,11 @@ ShellRoot {
     readonly property color acentoClaro: "#8fd3ae"
     readonly property color fondo: "#0a0f0c"
     readonly property color texto: "#cfdcd4"
+    // Estética Y2K / PlayStation: bordes biselados y barra de título como Windows 98
+    readonly property color biselClaro: "#8fd3ae"
+    readonly property color biselOscuro: "#050806"
+    readonly property color tituloA: "#2f6b4e"
+    readonly property color tituloB: "#5fa8a0"
 
     property var ventanas: []   // todas las ventanas (de todos los escritorios)
     property var escritorios: [] // escritorios virtuales, para «Mover a escritorio»
@@ -108,21 +113,29 @@ ShellRoot {
         property int marcada: -1         // -1 sin casilla, 0 sin marcar, 1 marcada
         property int submenu: -1         // -1 no es submenú, 0 cerrado, 1 abierto
         signal elegido()
-        width: 240; height: 30; radius: 7
-        color: zonaOp.containsMouse ? Qt.rgba(root.acento.r, root.acento.g, root.acento.b, 0.18) : "transparent"
+        width: 240; height: 30
+        color: zonaOp.containsMouse ? root.acento : "transparent"
         Text {
             anchors { left: parent.left; leftMargin: op.sangria ? 26 : 12; verticalCenter: parent.verticalCenter }
             text: (op.marcada === 1 ? "✓ " : op.marcada === 0 ? "   " : "") + op.texto
-            color: op.peligro ? "#e38b7f" : root.texto
+            color: zonaOp.containsMouse ? root.fondo : op.peligro ? "#e38b7f" : root.texto
             font.family: "Rajdhani"; font.pixelSize: 15; font.weight: Font.DemiBold
         }
         Text {
             visible: op.submenu >= 0
             anchors { right: parent.right; rightMargin: 12; verticalCenter: parent.verticalCenter }
             text: op.submenu === 1 ? "▾" : "▸"
-            color: root.acento; font.pixelSize: 13
+            color: zonaOp.containsMouse ? root.fondo : root.acento; font.pixelSize: 13
         }
         MouseArea { id: zonaOp; anchors.fill: parent; hoverEnabled: true; onClicked: op.elegido() }
+    }
+    // Borde biselado: claro arriba/izquierda, oscuro abajo/derecha
+    component Bisel: Item {
+        anchors.fill: parent
+        Rectangle { width: parent.width; height: 2; color: Qt.rgba(root.biselClaro.r, root.biselClaro.g, root.biselClaro.b, 0.85) }
+        Rectangle { width: 2; height: parent.height; color: Qt.rgba(root.biselClaro.r, root.biselClaro.g, root.biselClaro.b, 0.85) }
+        Rectangle { y: parent.height - 2; width: parent.width; height: 2; color: root.biselOscuro }
+        Rectangle { x: parent.width - 2; width: 2; height: parent.height; color: root.biselOscuro }
     }
     component Separador: Rectangle {
         width: 240; height: 9; color: "transparent"
@@ -224,21 +237,37 @@ ShellRoot {
                 width: lista.width + 12; height: lista.height + 12
                 x: Math.max(8, Math.min(ventana.width - width - 8, ventana.menuX - width / 2))
                 y: ventana.height - (root.maximo + root.relleno + 20) - height
-                radius: 12
                 color: Qt.rgba(root.fondo.r, root.fondo.g, root.fondo.b, 0.97)
-                border.width: 1; border.color: Qt.rgba(root.acento.r, root.acento.g, root.acento.b, 0.6)
                 HoverHandler { id: sobreMenu }
+                Bisel {}
 
                 Column {
                     id: lista
                     x: 6; y: 6
-                    Text {
-                        width: 240; height: 28
-                        leftPadding: 12; verticalAlignment: Text.AlignVCenter
-                        text: ventana.menuEntrada?.name ?? ventana.menuApp?.id ?? ""
-                        color: root.acento; elide: Text.ElideRight
-                        font.family: "Rajdhani"; font.pixelSize: 14; font.weight: Font.Bold
+                    // barra de título con el nombre de la app
+                    Rectangle {
+                        width: 240; height: 24
+                        gradient: Gradient {
+                            orientation: Gradient.Horizontal
+                            GradientStop { position: 0; color: root.tituloA }
+                            GradientStop { position: 1; color: root.tituloB }
+                        }
+                        Text {
+                            x: 8; width: parent.width - 34; anchors.verticalCenter: parent.verticalCenter
+                            text: ventana.menuEntrada?.name ?? ventana.menuApp?.id ?? ""
+                            color: "#ffffff"; elide: Text.ElideRight
+                            font.family: "Rajdhani"; font.pixelSize: 14; font.weight: Font.Bold
+                        }
+                        Rectangle {   // botón × con relieve: cierra el menú
+                            anchors { right: parent.right; rightMargin: 4; verticalCenter: parent.verticalCenter }
+                            width: 18; height: 16
+                            color: "#3a4a41"
+                            Bisel {}
+                            Text { anchors.centerIn: parent; text: "×"; color: root.texto; font.pixelSize: 13; font.bold: true }
+                            MouseArea { anchors.fill: parent; onClicked: ventana.cerrarMenu() }
+                        }
                     }
+                    Item { width: 1; height: 4 }
 
                     // Acciones propias de la app, leídas de su .desktop («Nueva ventana de incógnito», etc.)
                     Repeater {
@@ -345,10 +374,8 @@ ShellRoot {
                     anchors { bottom: parent.bottom; bottomMargin: 6; horizontalCenter: parent.horizontalCenter }
                     width: fila.width + root.relleno * 2
                     height: root.base + root.relleno * 2
-                    radius: 14
-                    color: Qt.rgba(root.fondo.r, root.fondo.g, root.fondo.b, 0.78)
-                    border.width: 1
-                    border.color: Qt.rgba(root.acento.r, root.acento.g, root.acento.b, 0.45)
+                    color: Qt.rgba(root.fondo.r, root.fondo.g, root.fondo.b, 0.85)
+                    Bisel {}
                 }
 
                 Row {
@@ -406,7 +433,7 @@ ShellRoot {
                                 visible: icono.suyas.length > 0
                                 anchors { top: parent.bottom; topMargin: 2; horizontalCenter: parent.horizontalCenter }
                                 width: icono.activa ? 14 : 5
-                                height: 3; radius: 2
+                                height: 3
                                 color: icono.activa ? root.acentoClaro : root.acento
                                 Behavior on width { NumberAnimation { duration: 150 } }
                             }
@@ -416,8 +443,7 @@ ShellRoot {
                                 visible: area.containsMouse && !ventana.menuAbierto
                                 anchors { bottom: parent.top; bottomMargin: 6; horizontalCenter: parent.horizontalCenter }
                                 width: nombre.implicitWidth + 16; height: nombre.implicitHeight + 6
-                                radius: 6
-                                color: Qt.rgba(root.fondo.r, root.fondo.g, root.fondo.b, 0.9)
+                                color: Qt.rgba(root.fondo.r, root.fondo.g, root.fondo.b, 0.95)
                                 border.width: 1; border.color: root.acento
                                 Text {
                                     id: nombre

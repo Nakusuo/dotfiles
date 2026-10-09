@@ -4,10 +4,9 @@ import Quickshell.Io
 import Quickshell.Wayland
 import qs.components
 
-// HUD futurista sobre KDE Plasma
-//  - Capa de escritorio: reactor, sistema y musica (debajo de las ventanas)
-//  - Barra: hexagonos de escritorios en el centro del panel de Plasma
-//  - Super+A: invoca el HUD por encima de todo (Esc o clic para cerrar)
+// HUD futurista sobre KDE Plasma, con el estilo del dashboard (Super+Shift+M)
+//  - Super+A: muestra reloj, sistema y música por encima de todo, sobre una lluvia tipo cmatrix
+//  - Esc o clic para cerrar
 ShellRoot {
     id: shell
     property bool summoned: false
@@ -26,27 +25,6 @@ ShellRoot {
             id: scope
             required property var modelData
 
-            // HUD de escritorio: solo los widgets reciben clics
-            PanelWindow {
-                screen: scope.modelData
-                WlrLayershell.layer: WlrLayer.Bottom
-                WlrLayershell.namespace: "hud-desktop"
-                exclusionMode: ExclusionMode.Ignore
-                anchors { top: true; bottom: true; left: true; right: true }
-                color: "transparent"
-
-                HudLayout {
-                    id: deskHud
-                    anchors.fill: parent
-                    revealed: !shell.summoned
-                }
-                mask: Region {
-                    Region { item: deskHud.reactor }
-                    Region { item: deskHud.stats }
-                    Region { item: deskHud.music }
-                }
-            }
-
             // HUD invocado por encima de todo
             PanelWindow {
                 id: overlay
@@ -62,24 +40,32 @@ ShellRoot {
                 Rectangle {
                     id: backdrop
                     anchors.fill: parent
-                    color: "#d9050a07"
+                    color: "#f20a0f0c"
                     opacity: shell.summoned ? 1 : 0
                     Behavior on opacity { NumberAnimation { duration: 280; easing.type: Easing.OutCubic } }
 
-                    // lineas de escaneo
-                    Column {
+                    // lluvia verde, como el cmatrix del dashboard
+                    // (Loader: cerrado, el HUD no existe y no gasta CPU; antes sus animaciones seguían corriendo escondidas)
+                    Loader {
                         anchors.fill: parent
-                        Repeater {
-                            model: Math.ceil(overlay.height / 4)
-                            Rectangle { width: overlay.width; height: 4; color: index % 2 ? "transparent" : "#0a6cc196" }
-                        }
+                        active: overlay.visible
+                        sourceComponent: MatrixRain { running: shell.summoned }
                     }
                     MouseArea { anchors.fill: parent; onClicked: shell.summoned = false }
                 }
 
-                HudLayout {
+                Loader {
                     anchors.fill: parent
-                    revealed: shell.summoned
+                    active: overlay.visible
+                    sourceComponent: HudLayout { revealed: shell.summoned }
+                }
+
+                // líneas de televisor CRT por encima de todo
+                Loader {
+                    anchors.fill: parent
+                    active: overlay.visible
+                    opacity: backdrop.opacity
+                    sourceComponent: Scanlines {}
                 }
 
                 Item {
@@ -87,19 +73,6 @@ ShellRoot {
                     focus: shell.summoned
                     Keys.onEscapePressed: shell.summoned = false
                 }
-            }
-
-            // Centro de la barra superior
-            PanelWindow {
-                screen: scope.modelData
-                WlrLayershell.layer: WlrLayer.Top
-                WlrLayershell.namespace: "hud-bar"
-                exclusionMode: ExclusionMode.Ignore
-                anchors { top: true }
-                implicitWidth: bar.implicitWidth
-                implicitHeight: 34
-                color: "transparent"
-                WorkspaceBar { id: bar; anchors.fill: parent }
             }
         }
     }
