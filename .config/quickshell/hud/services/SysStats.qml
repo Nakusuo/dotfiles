@@ -17,6 +17,10 @@ Singleton {
     readonly property bool charging: !UPower.onBattery
     property string uptime: ""
 
+    // Solo mide mientras el HUD está abierto (lo activa StatsPanel)
+    property bool active: false
+    onActiveChanged: _prev = null
+
     property var _prev: null
 
     FileView { id: stat; path: "/proc/stat" }
@@ -24,7 +28,7 @@ Singleton {
     FileView { id: up; path: "/proc/uptime" }
 
     Timer {
-        interval: 1500; running: true; repeat: true; triggeredOnStart: true
+        interval: 1500; running: root.active; repeat: true; triggeredOnStart: true
         onTriggered: {
             stat.reload(); mem.reload(); up.reload();
             const l = stat.text().split("\n")[0].trim().split(/\s+/).slice(1).map(Number);
