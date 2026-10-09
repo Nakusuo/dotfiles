@@ -45,16 +45,19 @@ ShellRoot {
                     Behavior on opacity { NumberAnimation { duration: 280; easing.type: Easing.OutCubic } }
 
                     // lluvia verde, como el cmatrix del dashboard
-                    MatrixRain {
+                    // (Loader: cerrado, el HUD no existe y no gasta CPU; antes sus animaciones seguían corriendo escondidas)
+                    Loader {
                         anchors.fill: parent
-                        running: shell.summoned
+                        active: overlay.visible
+                        sourceComponent: MatrixRain { running: shell.summoned }
                     }
                     MouseArea { anchors.fill: parent; onClicked: shell.summoned = false }
                 }
 
-                HudLayout {
+                Loader {
                     anchors.fill: parent
-                    revealed: shell.summoned
+                    active: overlay.visible
+                    sourceComponent: HudLayout { revealed: shell.summoned }
                 }
 
                 Item {

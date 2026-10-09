@@ -1,7 +1,6 @@
 .config/alacritty/alacritty.toml
 .config/alacritty/alacritty.toml.bak-20260924
 .config/alacritty/verdetech.toml
-.config/autostart/dashboard.desktop
 .config/autostart/quickshell-dock.desktop
 .config/autostart/quickshell-hud.desktop
 .config/btop/btop.conf

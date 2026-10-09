@@ -21,7 +21,7 @@ MoveResize=90
 CommandAllKey=Meta
 
 [Plugins]
-blurEnabled=true
+blurEnabled=false
 glassEnabled=true
 glideEnabled=false
 krohnkiteEnabled=true
@@ -29,7 +29,7 @@ kwin4_effect_shapecornersEnabled=true
 mouseclickEnabled=true
 scaleEnabled=true
 slideEnabled=true
-translucencyEnabled=true
+translucencyEnabled=false
 wobblywindowsEnabled=false
 
 [Round-Corners]
