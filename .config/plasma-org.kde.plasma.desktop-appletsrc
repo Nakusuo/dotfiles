@@ -17,7 +17,7 @@ plugin=org.kde.plasma.folder
 wallpaperplugin=org.kde.image
 
 [Containments][509][Wallpaper][org.kde.image][General]
-Image=file:///home/nakusu/Imágenes/wallpaper-cyber.png
+Image=file:///home/nakusu/Imágenes/fondo-angel.png
 SlidePaths=/home/nakusu/.local/share/wallpapers/,/usr/share/wallpapers/
 
 [Containments][510]
