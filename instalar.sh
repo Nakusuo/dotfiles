@@ -6,7 +6,7 @@ while IFS= read -r f; do
   [ -e ~/"$f" ] && { mkdir -p "$respaldo/$(dirname "$f")"; cp ~/"$f" "$respaldo/$f"; }
   mkdir -p ~/"$(dirname "$f")"; cp "$f" ~/"$f"
 done < archivos.txt
-chmod +x ~/.local/bin/dashboard.sh ~/.local/bin/tema.sh ~/.local/bin/ligero.sh ~/.local/bin/fondo-y2k.py ~/.local/bin/bloqueo-video.sh
+chmod +x ~/.local/bin/dashboard.sh ~/.local/bin/tema.sh ~/.local/bin/ligero.sh ~/.local/bin/fondo-y2k.py ~/.local/bin/fondos-y2k.sh ~/.local/bin/bloqueo-video.sh
 # El dashboard ya no arranca solo al iniciar sesión (4 terminales animadas gastan mucho); se abre con Super+Shift+M
 rm -f ~/.config/autostart/dashboard.desktop
 echo "Listo. Lo anterior quedó en $respaldo. Cierra sesión y vuelve a entrar."

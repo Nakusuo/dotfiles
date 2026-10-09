@@ -47,6 +47,7 @@ Imágenes/wallpaper-tech.png
 .local/bin/tema.sh
 .local/bin/ligero.sh
 .local/bin/fondo-y2k.py
+.local/bin/fondos-y2k.sh
 .local/bin/bloqueo-video.sh
 .local/share/applications/dashboard.desktop
 .local/share/applications/hud-toggle.desktop
