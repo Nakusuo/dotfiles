@@ -2,7 +2,7 @@
 
 Mi rice de KDE Plasma 6 (CachyOS, Wayland) con aspecto tipo Hyprland: paleta verde apagada, ventanas en mosaico y un dashboard de terminales.
 
-![Fondo](Imágenes/fondo-angel.png)
+![Fondo](Imágenes/wallpaper-tech.png)
 
 ## Qué incluye
 
@@ -47,8 +47,6 @@ KWin no le da a Quickshell la lista de ventanas, así que `ventanas.js` (un scri
 | Super + Shift + G | Modo ligero (sin blur, sombras ni animaciones) |
 
 ## Fondos cyberpunk 2000
-
-**Fondo incluido:** `fondo-angel.png`, dibujado entero con código por `fondo-angel.py` (silueta a contraluz con el pelo al viento y sigilos tribales). Para otra variante: `fondo-angel.py base.png --semilla 7 && fondo-y2k.py base.png ~/Imágenes/fondo-angel.png`.
 
 **Escritorio:** cualquier imagen pasa a visión nocturna verde con VHS (colores corridos, grano, scanlines) y la pantalla de videocámara:
 

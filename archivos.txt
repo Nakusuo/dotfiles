@@ -42,13 +42,11 @@
 .config/quickshell/hud/shell.qml
 .config/quickshell/hud/Theme.qml
 Imágenes/wallpaper-tech.png
-Imágenes/fondo-angel.png
 .local/bin/dashboard.sh
 .local/bin/iconos-verdes.py
 .local/bin/tema.sh
 .local/bin/ligero.sh
 .local/bin/fondo-y2k.py
-.local/bin/fondo-angel.py
 .local/bin/bloqueo-video.sh
 .local/share/applications/dashboard.desktop
 .local/share/applications/hud-toggle.desktop
