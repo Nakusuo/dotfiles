@@ -41,10 +41,25 @@ KWin no le da a Quickshell la lista de ventanas, así que `ventanas.js` (un scri
 | Super + Shift + Enter | Hacer esta ventana la principal |
 | Super + Ctrl + H / L / K / J | Cambiar el tamaño |
 | Super + F | Soltar la ventana del mosaico o volver a meterla |
-| Super + D | Lanzador (fuzzel) |
+| Super + D | Lanzador (fuzzel; con `escritorio.sh on`, el lanzador `C:\>`) |
+| Super + S | Panel del escritorio (música, calendario, clima, sistema, avisos) |
 | Super + Shift + M | Dashboard |
 | Super + A | HUD |
 | Super + Shift + G | Modo ligero (sin blur, sombras ni animaciones) |
+
+## Escritorio Verde Tech NVG
+
+Barra lateral, panel, lanzador, notificaciones y OSD hechos con Quickshell, con la pantalla de videocámara y ventanas Windows 98. Pensado para una laptop vieja: nada mide ni se anima mientras no se ve, y respeta el modo ligero.
+
+```bash
+escritorio.sh on    # quita el panel de arriba de Plasma y su OSD, y arranca «qs -c escritorio»
+escritorio.sh off   # todo como antes
+```
+
+- **Barra izquierda:** ● REC (abre el panel), escritorios, reloj, bandeja, volumen (rueda y clic), red, batería y ⏻.
+- **Panel (Super+S o ● REC):** música, calendario, clima (wttr.in, cada 30 min), CPU/RAM/batería y los últimos avisos.
+- **Lanzador (Super+D):** escribe y Enter. Si Super+D sigue abriendo fuzzel, quítale el atajo en Configuración → Atajos.
+- **Login:** `./instalar-sddm.sh` (pide sudo; `--quitar` para volver). Probar antes: `sddm-greeter-qt6 --test-mode --theme sddm/verdetech`.
 
 ## Fondos cyberpunk 2000
 

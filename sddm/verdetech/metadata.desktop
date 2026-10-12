@@ -1,0 +1,11 @@
+[SddmGreeterTheme]
+Name=Verde Tech NVG
+Description=Login de visión nocturna: videocámara del 2000 y ventana Windows 98
+Author=Nakusuo
+Type=sddm-theme
+Version=1.0
+MainScript=Main.qml
+ConfigFile=theme.conf
+Theme-Id=verdetech
+Theme-API=2.0
+QtVersion=6

@@ -31,4 +31,5 @@ else
 fi
 
 qdbus6 org.kde.KWin /KWin reconfigure >/dev/null
+qs -c escritorio ipc call escritorio ligero "$modo" >/dev/null 2>&1   # la barra deja de parpadear y animar
 command -v notify-send >/dev/null && notify-send -a "Verde Tech" -i preferences-desktop-effects "$aviso"

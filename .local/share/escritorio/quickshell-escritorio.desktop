@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Escritorio (Quickshell)
+Exec=qs -c escritorio
+X-KDE-autostart-phase=2
+NoDisplay=true

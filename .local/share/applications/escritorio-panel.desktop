@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Panel del escritorio
+Exec=qs -c escritorio ipc call escritorio panel
+Icon=view-calendar
+NoDisplay=true
+X-KDE-Shortcuts=Meta+S

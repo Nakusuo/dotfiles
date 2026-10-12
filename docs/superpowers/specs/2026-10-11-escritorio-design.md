@@ -51,7 +51,7 @@ con esto, gana el rendimiento.
   - `on`: activa el autostart, quita el panel superior de Plasma con
     `qdbus6 org.kde.plasmashell /PlasmaShell evaluateScript`, pone
     `plasmarc [OSD] Enabled=false`, cambia el atajo de fuzzel por el lanzador,
-    añade Super+D y arranca `qs -c escritorio`.
+    registra Super+D (lanzador) y Super+S (panel) y arranca `qs -c escritorio`.
   - `off`: lo deshace todo. Antes de quitar el panel guarda su configuración en
     `~/.local/share/escritorio/panel.js` para poder volver a crearlo.
 
@@ -80,7 +80,7 @@ con esto, gana el rendimiento.
 
 ## 2. Panel desplegable
 
-- Se abre con un clic en ● REC o con **Super+D** (IPC `panel`). Es una `PanelWindow`
+- Se abre con un clic en ● REC o con **Super+S** (IPC `panel`). Es una `PanelWindow`
   pegada a la derecha de la barra, de 420 px de ancho y alto completo.
   `exclusiveZone: 0` y teclado `OnDemand`, para que Esc la cierre.
 - Al abrir se desliza de `x = -420` a `0` en 220 ms y una línea de scanline recorre
@@ -103,7 +103,7 @@ con esto, gana el rendimiento.
 
 ## 3. Lanzador
 
-- Se abre con **Alt+Espacio** (IPC `lanzador`) y sustituye al atajo de fuzzel.
+- Se abre con **Super+D** (IPC `lanzador`), el atajo que tenía fuzzel.
   Es una `VentanaW98` centrada, de 520 px de ancho, con título `EJECUTAR`.
 - Tiene un campo `C:\> ` con cursor de bloque parpadeante (en modo ligero, fijo).
 - Busca en `DesktopEntries.applications`, filtrando las entradas `NoDisplay`.

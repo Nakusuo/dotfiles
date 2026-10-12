@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Lanzador del escritorio
+Exec=qs -c escritorio ipc call escritorio lanzador
+Icon=system-search
+NoDisplay=true
+X-KDE-Shortcuts=Meta+D
