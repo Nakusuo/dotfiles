@@ -59,6 +59,12 @@ plasma-apply-wallpaperimage ~/Imágenes/fondo-y2k.png
 
 Se pueden juntar (`--ascii --errores`); `--sin-osd` quita los textos de videocámara. Es una imagen fija: no gasta nada.
 
+**Varios fondos que se alternan:** `fondos-y2k.sh` pasa varias fotos (rutas o enlaces) por el filtro y las pone en presentación:
+
+```
+fondos-y2k.sh -m 10 foto1.jpg https://.../foto2.jpg     # cambian cada 10 minutos
+```
+
 **Pantalla de bloqueo con video o GIF:**
 
 ```
