@@ -1,3 +1,4 @@
+//@ pragma IconTheme BeautyLine-Verde
 import QtQuick
 import Quickshell
 import Quickshell.Io
