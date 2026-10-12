@@ -18,7 +18,7 @@ archivos=(
   .config/quickshell/hud/shell.qml
   .local/share/konsole/VerdeTech.colorscheme
 )
-fondo=~/Imágenes/wallpaper-tech.png
+fondo=~/Imágenes/fondo-y2k.png
 fondo_rojo=~/Imágenes/wallpaper-tech-rojo-oscuro.png
 
 # 1) Guardar el verde original (solo una vez)

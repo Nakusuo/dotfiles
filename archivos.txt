@@ -42,6 +42,7 @@
 .config/quickshell/hud/shell.qml
 .config/quickshell/hud/Theme.qml
 Imágenes/wallpaper-tech.png
+Imágenes/fondo-y2k.png
 .local/bin/dashboard.sh
 .local/bin/iconos-verdes.py
 .local/bin/tema.sh

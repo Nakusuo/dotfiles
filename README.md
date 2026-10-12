@@ -2,7 +2,7 @@
 
 Mi rice de KDE Plasma 6 (CachyOS, Wayland) con aspecto tipo Hyprland: paleta verde apagada, ventanas en mosaico y un dashboard de terminales.
 
-![Fondo](Imágenes/wallpaper-tech.png)
+![Fondo](Imágenes/fondo-y2k.png)
 
 ## Qué incluye
 
